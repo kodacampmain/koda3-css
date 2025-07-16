@@ -1,0 +1,34 @@
+1. dikumpulkan per halaman
+/pages
+-/profile
+--index.html
+--index.css
+-/login
+--index.html
+--index.css
+-/register
+--index.html
+--index.css
+
+2. dikumpulkan per tipe file
+/pages
+-/profile.html
+-/login.html
+-/register.html
+/styles
+-/profile.css
+-/login.css
+-/register.css
+
+3. digabung
+/pages
+-/profile
+--index.html
+-/login
+--index.html
+-/register
+--index.html
+/styles
+-/profile.css
+-/login.css
+-/register.css

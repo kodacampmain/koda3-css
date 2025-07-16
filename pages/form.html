@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <!-- <style>
+      input[type="checkbox"] {
+        display: none;
+      }
+    </style> -->
+  </head>
+  <body>
+    <h1>Form</h1>
+    <form>
+      <!-- Label -->
+      <div>
+        <label for="email">Email</label><br />
+        <input type="email" name="surel" id="email" />
+      </div>
+      <div>
+        <label for="pwd">Password</label><br />
+        <input type="password" name="pass" id="pwd" />
+      </div>
+      <!-- Horizontal Rule -->
+      <hr />
+      <!-- Placeholder -->
+      <!-- <label for="usernmae">Username</label> -->
+      <input type="text" name="username" placeholder="username" />
+      <br />
+      <input type="password" name="passwd" placeholder="password" />
+      <br />
+      <hr />
+      <!-- input number -->
+      <label for="num">Quantity</label><br />
+      <input type="number" name="angka" id="num" />
+      <!-- <input type="tel" name="" id=""> -->
+      <br />
+      <hr />
+      <label>Jenis Kelamin</label><br />
+      <input type="radio" name="gender" id="l" value="L" /><label for="l">Laki-laki</label>
+      <input type="radio" name="gender" id="p" value="P" /><label for="p">Perempuan</label>
+      <br />
+      <label>Bahasa yang dikuasai</label><br />
+      <input type="checkbox" name="lang" id="js" value="js" /><label for="js">JS</label>
+      <input type="checkbox" name="lang" id="css" value="css" /><label for="css">CSS</label>
+      <input type="checkbox" name="lang" id="html" value="html" /><label for="html">HTML</label>
+      <input type="checkbox" name="lang" id="php" value="php" /><label for="php">PHP</label><br />
+      <label for="lang-drop">Bahasa yang dikuasai</label><br />
+      <select name="lang-drop" id="lang-drop">
+        <option value="" disabled selected></option>
+        <option value="js">JS</option>
+        <option value="css">CSS</option>
+        <option value="html">HTML</option>
+        <option value="php">PHP</option>
+      </select>
+      <hr />
+      <label for="kns">Keluhan & Saran</label><br />
+      <textarea name="kns" id="kns" cols="50" rows="3" maxlength="100"></textarea>
+      <button type="submit">Submit</button>
+    </form>
+    <div style="margin-top: 100px"></div>
+  </body>
+</html>
