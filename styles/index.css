@@ -1,0 +1,76 @@
+/* @import "./globals.css"; */
+
+p,
+span {
+  color: var(--primary);
+}
+
+a {
+  font-size: 24px;
+  color: var(--primary);
+}
+a[target="_blank"] {
+  font-family: cursive;
+}
+
+body {
+  background-color: blanchedalmond;
+  font-family: "My Soul", cursive;
+}
+
+.big {
+  font-size: 36px;
+  font-family: cursive;
+}
+.big::first-letter {
+  font-size: 72px;
+  font-family: "My Soul", cursive;
+}
+#link {
+  color: chocolate;
+  font-size: 24px;
+  text-decoration: underline;
+  user-select: none;
+  cursor: pointer;
+}
+#link:hover {
+  background-color: whitesmoke;
+  color: darkblue;
+}
+a:active {
+  color: transparent;
+}
+
+div.box h2 + p {
+  color: darkmagenta;
+  font-size: 24px;
+  text-decoration: line-through;
+}
+
+/* 
+operator relasi selektor
+1. spasi => children of
+h1 p => elemen p yang merupakan children dari elemen h1
+<h1>
+    ..
+    <p></p> => elemen ini lah yg ditunjuk
+    ..
+</h1>
+
+2. > (greater than) => direct children of
+h1 > p => elemen p yang merupakan direct children dari elemen h1
+<h1>
+    <p></p> => elemen ini lah yg ditunjuk
+</h1>
+
+3. + => direct sibling of
+h1 + p => elemen p yang merupakan direct sibling dari elemen h1
+<h1></h1>
+<p></p>
+
+4. ~ (tilda) => next sibling of
+h1 ~ p => elemen p yang merupakan next sibling of h1
+<h1></h1>
+..
+<p></p>
+*/
