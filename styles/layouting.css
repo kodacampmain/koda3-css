@@ -1,5 +1,5 @@
 body {
-  padding: 5px;
+  padding: 10px;
   background-color: salmon;
 }
 
@@ -20,7 +20,7 @@ body > div:nth-child(2) {
 }
 
 input[type="text"] {
-  padding: 5px;
+  padding: 10px;
   font-family: "My Soul", cursive;
   font-size: 24px;
   border-left: none;
@@ -48,34 +48,140 @@ input[type="text"]:focus {
 section {
   background-color: aliceblue;
   margin-top: 150px;
-  padding: 5px;
+  padding: 10px;
   height: 1000px;
   position: relative;
   /* posisi diberikan relatif agar bisa menjadi acuan dari posisiton absolute */
 }
 
-section div.box:nth-child(2) {
+.position div.box:nth-child(2) {
   position: relative;
   left: 120px;
 }
 
-section div.box:nth-child(3) {
+.position div.box:nth-child(3) {
   position: absolute;
   /* left: 125px; */
   top: -50px;
   right: 0;
 }
 
-section div.box:nth-child(4) {
+.position div.box:nth-child(4) {
   position: fixed;
   bottom: 0;
   right: 0;
   margin: 0 5px 5px 0;
   border-radius: 50%;
   cursor: pointer;
+  z-index: 99;
+  display: none;
 }
-section div.box:nth-child(5) {
+.position div.box:nth-child(5) {
   position: sticky;
   top: 10px;
   bottom: 10px;
+}
+
+.flex {
+  height: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* flex-wrap: wrap; */
+  /* overflow-x: scroll; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
+}
+
+.flex .box {
+  /* width: 160px; */
+  /* height: auto; */
+  /* flex-shrink: 1; */
+  flex-basis: 100px;
+  width: auto;
+  /* flex: 1; */
+  /* flex: <flex-grow> <flex-shrink> <flex-basis> */
+}
+
+.flex .box:nth-child(1) {
+  /* flex-grow: 1; */
+}
+.flex .box:nth-child(2) {
+  /* flex-grow: 1; */
+}
+.flex .box:nth-child(3) {
+  /* flex-grow: 2; */
+  /* flex-shrink: 5; */
+}
+.flex .box:nth-child(4) {
+  /* flex-grow: 1; */
+}
+.flex .box:nth-child(5) {
+  /* flex-grow: 1; */
+}
+
+.grid {
+  height: 600px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 100px 1fr 100px;
+  gap: 10px 20px;
+  /* align-items: center;
+  justify-items: center; */
+  place-items: center;
+  grid-template-areas:
+    "a b"
+    "c d"
+    "e d";
+}
+
+.grid .box:nth-child(1) {
+  grid-area: d;
+}
+.grid .box:nth-child(2) {
+  grid-area: b;
+}
+.grid .box:nth-child(3) {
+  grid-area: c;
+}
+.grid .box:nth-child(4) {
+  grid-area: a;
+  /* grid-column: 2/3;
+  grid-row: 2/4; */
+}
+.grid .box:nth-child(5) {
+  grid-area: e;
+}
+.grid .box:nth-child(6) {
+  grid-column: 3/4;
+  grid-row: 4/5;
+}
+.grid .box {
+  height: 100%;
+  width: 100%;
+}
+
+/* MEDIA QUERY */
+
+@media screen and (min-width: 640px) {
+  body,
+  div,
+  form,
+  section,
+  .box {
+    color: #595959;
+    font-size: 18px;
+    padding: 5px;
+  }
+}
+@media screen and (min-width: 768px) {
+  body,
+  div,
+  form,
+  section,
+  .box {
+    color: black;
+    font-size: 16px;
+    padding: 10px;
+  }
 }
