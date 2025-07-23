@@ -1,0 +1,83 @@
+section {
+  height: 200px;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.traffic-light {
+  background-color: skyblue;
+}
+
+.traffic-light .container {
+  width: 300px;
+  background-color: black;
+  padding: 5px;
+  height: 100px;
+  display: flex;
+  gap: 5px;
+  border-radius: 10px;
+}
+
+.container .light {
+  flex: 1;
+  border-radius: 50%;
+  position: relative;
+}
+
+.container .light:not(.active)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(128, 128, 128, 0.9);
+  border-radius: 50%;
+}
+
+.red {
+  background-color: red;
+}
+.yellow {
+  background-color: yellow;
+}
+.green {
+  background-color: green;
+}
+
+.chess-board {
+  height: 400px;
+  background-color: antiquewhite;
+}
+
+.chess-board .container {
+  width: 75%;
+  height: 75%;
+  border: 2px solid black;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+}
+
+.chess-board .white {
+  background-color: whitesmoke;
+}
+
+.chess-board .black {
+  background-color: black;
+  color: white;
+}
+
+#data-table {
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+#data-table th,
+#data-table td {
+  border: 2px solid black;
+  padding: 5px;
+}
+
+#data-table .top-scorer {
+  background-color: antiquewhite;
+}
