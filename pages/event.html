@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event</title>
+    <link rel="icon" href="../assets/imgs/48.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../styles/globals.css" />
+    <link rel="stylesheet" href="../styles/dom-minitask.css" />
+    <link rel="stylesheet" href="../styles/event.css" />
+    <script src="../assets/js/event.js" defer></script>
+  </head>
+  <body>
+    <section class="traffic-light">
+      <div class="container">
+        <div class="light red">
+          <div class="light yellow">
+            <div class="light green"></div>
+          </div>
+        </div>
+      </div>
+      <div class="control">
+        <!-- <button onclick="toggleLight('red')">Red</button>
+        <button onclick="toggleLight('yellow')">Yellow</button>
+        <button onclick="toggleLight('green')">Green</button> -->
+        <button>Red</button>
+        <button>Yellow</button>
+        <button>Green</button>
+      </div>
+    </section>
+    <section>
+      <div class="pwd-input">
+        <input type="password" name="" id="" />
+        <img src="../assets/imgs/eye-solid-full.svg" width="10" height="10" alt="eye" />
+      </div>
+    </section>
+  </body>
+  <script>
+    const containerInput = document.querySelector("section .pwd-input");
+    const pwdInput = containerInput.querySelector("input[type=password]");
+    const showPwd = containerInput.querySelector("img");
+    showPwd.addEventListener("click", function () {
+      if (pwdInput.type === "password") {
+        pwdInput.type = "text";
+        showPwd.src = "../assets/imgs/eye-slash-regular-full.svg";
+        return;
+      }
+      pwdInput.type = "password";
+      showPwd.src = "../assets/imgs/eye-solid-full.svg";
+    });
+  </script>
+</html>

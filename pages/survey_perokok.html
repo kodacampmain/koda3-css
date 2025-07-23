@@ -6,6 +6,7 @@
     <meta name="description" content="Survey for smoker" />
     <title>Smoker Survey</title>
     <link rel="icon" href="../assets/imgs/48.png" type="image/x-icon" />
+    <script src="../assets/js/survey_perokok.js" defer></script>
   </head>
   <body>
     <form>
@@ -19,8 +20,8 @@
       </div>
       <div>
         <label>Gender</label><br />
-        <input type="radio" id="m" value="m" name="gender" /><label for="m">Male</label>
-        <input type="radio" id="f" value="f" name="gender" /><label for="f">Female</label>
+        <input type="radio" id="m" value="male" name="gender" /><label for="m">Male</label>
+        <input type="radio" id="f" value="female" name="gender" /><label for="f">Female</label>
       </div>
       <div>
         <label for="smoker">Do you smoke?</label><br />
@@ -32,13 +33,21 @@
       </div>
       <div>
         <label>If yes, What brand/s of cigarette do you use?</label><br />
-        <input type="checkbox" name="brands" id="marlboro" /><label for="marlboro">Marlboro</label>
-        <input type="checkbox" name="brands" id="camel" /><label for="camel">Camel</label><br />
-        <input type="checkbox" name="brands" id="bensonhedges" /><label for="bensonhedges">Benson & Hedges</label>
-        <input type="checkbox" name="brands" id="pallmall" /><label for="pallmall">Pall Mall</label><br />
-        <input type="checkbox" name="brands" id="luckystrike" /><label for="luckystrike">Lucky Strike</label>
-        <input type="checkbox" name="brands" id="other" /><label for="other">Other:</label
-        ><input type="text" name="other-brands" id="other-brands" />
+        <input type="checkbox" name="brands" id="marlboro" value="marlboro" />
+        <label for="marlboro">Marlboro</label>
+        <input type="checkbox" name="brands" id="camel" value="camel" />
+        <label for="camel">Camel</label>
+        <br />
+        <input type="checkbox" name="brands" id="bensonhedges" value="bensonhedges" />
+        <label for="bensonhedges">Benson & Hedges</label>
+        <input type="checkbox" name="brands" id="pallmall" value="pallmall" />
+        <label for="pallmall">Pall Mall</label>
+        <br />
+        <input type="checkbox" name="brands" id="luckystrike" value="luckystrike" />
+        <label for="luckystrike">Lucky Strike</label>
+        <input type="checkbox" name="brands" id="other" value="other" />
+        <label for="other">Other:</label>
+        <input type="text" name="other-brands" id="other-brands" />
       </div>
       <button type="submit">Submit</button>
     </form>
