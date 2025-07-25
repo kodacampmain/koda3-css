@@ -24,33 +24,51 @@ ageInput.addEventListener("change", (e) => {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  const inputData = {};
+  const inputData = new FormData();
+  // const inputData = {};
   const inputs = form.querySelectorAll("input");
   inputs.forEach((input) => {
     if (input.type === "checkbox") {
-      let choices = [];
-      if (Object.keys(inputData).includes(input.name)) {
-        choices = inputData[input.name];
-      }
+      // let choices = [];
+      // // if (Object.keys(inputData).includes(input.name)) {
+      // for (const key of inputData.keys()) {
+      //   if (key === input.name) {
+      //     // choices = inputData[input.name];
+      //     choices = JSON.parse(inputData.get(input.name));
+      //     break;
+      //   }
+      // }
       if (input.checked) {
         if (input.value === "other") {
           const otherBrand = form.querySelector("input#other-brands");
-          choices.push(otherBrand.value);
+          inputData.append(input.name, otherBrand.value);
+          // choices.push(otherBrand.value);
         } else {
-          choices.push(input.value);
+          inputData.append(input.name, input.value);
+          // choices.push(input.value);
         }
       }
-      Object.assign(inputData, {
-        [input.name]: choices,
-      });
+      // if (inputData.has(input.name)) {
+      //   inputData.set(input.name, JSON.stringify(choices));
+      //   return;
+      // }
+      // inputData.append(input.name, JSON.stringify(choices));
+      // Object.assign(inputData, {
+      //   [input.name]: choices,
+      // });
       return;
     }
     if (input.name === "other-brands") {
       return;
     }
-    Object.assign(inputData, {
-      [input.name]: e.target[input.name].value,
-    });
+    if (inputData.has(input.name)) {
+      inputData.set(input.name, e.target[input.name].value);
+      return;
+    }
+    inputData.append(input.name, e.target[input.name].value);
+    // Object.assign(inputData, {
+    //   [input.name]: e.target[input.name].value,
+    // });
   });
   const selects = form.querySelectorAll("select");
   selects.forEach((select) => {
@@ -60,18 +78,30 @@ form.addEventListener("submit", (e) => {
         isSmoker = true;
       }
       if (!isSmoker) {
-        Object.assign(inputData, {
-          brands: [],
-        });
+        inputData.append("brands", JSON.stringify([]));
+        // Object.assign(inputData, {
+        //   brands: [],
+        // });
       }
-      Object.assign(inputData, {
-        [select.name]: isSmoker,
-      });
+      inputData.append(select.name, isSmoker);
+      // Object.assign(inputData, {
+      //   [select.name]: isSmoker,
+      // });
       return;
     }
-    Object.assign(inputData, {
-      [select.name]: e.target[select.name].value,
-    });
+    inputData.append(select.name, e.target[select.name].value);
+    // Object.assign(inputData, {
+    //   [select.name]: e.target[select.name].value,
+    // });
   });
-  console.log(inputData);
+  inputData.forEach((val, key) => {
+    console.log(key, val);
+  });
+  fetch("http://localhost:8080", {
+    body: inputData,
+    method: "POST",
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 });
