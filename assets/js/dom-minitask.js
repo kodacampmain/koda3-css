@@ -121,3 +121,101 @@
   tableFooter.append(footerRow);
   table.append(tableFooter);
 })();
+
+const header = document.querySelector("header");
+const nav = header.querySelector("nav");
+const menu = header.querySelector(".hamburger-menu");
+const loggedOut = header.querySelector(".logged-out");
+const loggedIn = header.querySelector(".logged-in");
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (localStorage.getItem("koda3:user")) {
+    loggedIn.style.display = "block";
+    loggedOut.style.display = "none";
+  } else {
+    loggedIn.style.display = "none";
+    loggedOut.style.display = "block";
+  }
+});
+const userChange = new Event("user-change");
+document.addEventListener(userChange.type, function () {
+  if (localStorage.getItem("koda3:user")) {
+    loggedIn.style.display = "block";
+    loggedOut.style.display = "none";
+  } else {
+    loggedIn.style.display = "none";
+    loggedOut.style.display = "block";
+  }
+});
+// loggedIn.addEventListener(userChange.type, function () {
+//   if (localStorage.getItem("koda3:user")) {
+//     loggedIn.style.display = "block";
+//     return;
+//   }
+//   loggedIn.style.display = "none";
+// });
+// loggedOut.addEventListener(userChange.type, function () {
+//   if (!localStorage.getItem("koda3:user")) {
+//     loggedOut.style.display = "block";
+//     return;
+//   }
+//   loggedOut.style.display = "none";
+// });
+loggedIn.addEventListener("click", function () {
+  localStorage.removeItem("koda3:user");
+  // loggedIn.dispatchEvent(userChange);
+  // loggedOut.dispatchEvent(userChange);
+  document.dispatchEvent(userChange);
+});
+
+menu.addEventListener("click", () => {
+  nav.classList.toggle("active");
+  menu.classList.toggle("active");
+});
+
+const form = document.querySelector("section.login form");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const { email, pwd } = e.target;
+  // validasi
+  const emailRe = /^[\w\.\-]+@[a-zA-Z]+\.(com|net|gov)$/;
+  const pwdRe = /^(?=.*[a-z])+(?=.*[A-Z])+(?=.*[!@#$%^&*/><])+[a-zA-Z!@#$%^&*/><]{8,}$/;
+
+  let error = 0;
+  const errorMsg = form.querySelectorAll("p.error");
+  if (errorMsg.length) {
+    for (let msg of errorMsg) {
+      msg.remove();
+    }
+  }
+
+  if (!emailRe.test(email.value)) {
+    error++;
+    const errorMsg = document.createElement("p");
+    errorMsg.textContent = "Invalid Email Address";
+    errorMsg.classList.add("error");
+    form.querySelector("input[name=email]").insertAdjacentElement("afterend", errorMsg);
+  }
+  if (!pwdRe.test(pwd.value)) {
+    error++;
+    const errorMsg = document.createElement("p");
+    errorMsg.textContent =
+      "Minimum 8 characters and have at least 1 lowercase letter, 1 uppercase letter and 1 of the following special character (!@#$%^&*/><)";
+    errorMsg.classList.add("error");
+    form.querySelector("input[name=pwd]").insertAdjacentElement("afterend", errorMsg);
+  }
+
+  if (!error) {
+    console.log(`\nEmail: ${email.value}\nPassword: ${pwd.value}`);
+    localStorage.setItem(
+      "koda3:user",
+      JSON.stringify({
+        email: email.value,
+        pwd: pwd.value,
+      })
+    );
+    // loggedIn.dispatchEvent(userChange);
+    // loggedOut.dispatchEvent(userChange);
+    document.dispatchEvent(userChange);
+  }
+});

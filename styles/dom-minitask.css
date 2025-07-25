@@ -81,3 +81,103 @@ section {
 #data-table .top-scorer {
   background-color: antiquewhite;
 }
+
+header {
+  font-family: cursive;
+  display: flex;
+  padding: 5px 20px;
+  & nav {
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    & ul {
+      display: flex;
+      list-style: none;
+      gap: 10px;
+      & li {
+        user-select: none;
+        cursor: pointer;
+      }
+    }
+  }
+  & img {
+    width: 30px;
+    height: 30px;
+  }
+  & .hamburger-menu {
+    width: 30px;
+    /* background-color: black; */
+    margin-left: 10px;
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: space-around;
+    cursor: pointer;
+    display: none;
+    & div {
+      border-bottom: 4px solid black;
+      border-radius: 2px;
+    }
+  }
+}
+
+section.login {
+  & form {
+    width: 500px;
+    & input,
+    & button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      font-size: 1.5rem;
+    }
+    & button {
+      cursor: pointer;
+      user-select: none;
+    }
+    & p.error {
+      color: red;
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    position: relative;
+    & nav {
+      display: none;
+    }
+    & nav.active {
+      display: block;
+      background-color: white;
+      padding: 5px;
+      border: 2px solid black;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      transform: translate(-10%, 110%);
+      & ul {
+        display: block;
+      }
+    }
+    & .hamburger-menu {
+      display: flex;
+      margin-left: auto;
+      & .top,
+      & .bottom {
+        transition: all 0.15s;
+      }
+    }
+    & .hamburger-menu.active {
+      & .middle {
+        display: none;
+      }
+      & .top {
+        transform: rotate(45deg) translateY(250%);
+      }
+      & .bottom {
+        transform: rotate(-45deg) translateY(-250%);
+      }
+    }
+  }
+}

@@ -9,6 +9,36 @@
     <script src="../assets/js/dom-minitask.js" defer></script>
   </head>
   <body>
+    <header>
+      <img src="../assets/imgs/48.png" alt="logo" />
+      <nav>
+        <ul>
+          <li>Home</li>
+          <li>Products</li>
+          <li>About</li>
+        </ul>
+      </nav>
+      <div class="logged-in">
+        <button>Sign Out</button>
+      </div>
+      <div class="logged-out">
+        <button>Sign in</button>
+      </div>
+      <div class="hamburger-menu">
+        <div class="top"></div>
+        <div class="middle"></div>
+        <div class="bottom"></div>
+      </div>
+    </header>
+
+    <section class="login">
+      <form>
+        <input type="text" name="email" placeholder="Email" autocomplete="off" />
+        <input type="password" name="pwd" placeholder="Password" />
+        <button type="submit">Login</button>
+      </form>
+    </section>
+
     <section class="traffic-light">
       <div class="container">
         <div class="light red active"></div>
